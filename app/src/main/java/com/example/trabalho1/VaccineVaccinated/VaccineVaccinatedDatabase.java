@@ -10,18 +10,21 @@ import com.example.trabalho1.VaccineVaccinated.Vaccinated.IVaccinatedDao;
 import com.example.trabalho1.VaccineVaccinated.Vaccinated.Vaccinated;
 import com.example.trabalho1.VaccineVaccinated.Vaccine.IVaccineDao;
 import com.example.trabalho1.VaccineVaccinated.Vaccine.Vaccine;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 @Database(entities = {Vaccine.class, Vaccinated.class}, version = 1)
-public abstract class VaccineVaccinedDatabase extends RoomDatabase {
+public abstract class VaccineVaccinatedDatabase extends RoomDatabase {
+    private static volatile VaccineVaccinatedDatabase instance;
+
+    public static synchronized VaccineVaccinatedDatabase getInstance(Context context){
+        if (instance == null){
+            instance = Room.databaseBuilder(context.getApplicationContext(),
+                    VaccineVaccinatedDatabase.class, "PostoX").build();
+        }
+        return instance;
+    }
+
     public abstract IVaccineDao vaccineDao();
     public abstract IVaccinatedDao vaccinatedDao();
-    private static volatile VaccineVaccinedDatabase instance;
-
-   public static synchronized VaccineVaccinedDatabase getInstance(Context context){
-       if (instance == null){
-            instance = Room.databaseBuilder(context.getApplicationContext(),
-           VaccineVaccinedDatabase.class, "PostoX").build();
-       }
-       return instance;
-   }
 }
