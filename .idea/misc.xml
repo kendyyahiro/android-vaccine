@@ -4,14 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/kendy/AndroidStudioProjects/Trabalho1/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2109375" />
-        <entry key="app/src/main/res/layout/fragment_vaccinated.xml" value="0.19947916666666668" />
-        <entry key="app/src/main/res/layout/fragment_vaccine.xml" value="0.2" />
-        <entry key="app/src/main/res/menu/navigation.xml" value="0.19375" />
+        <entry key="..\:/Users/vitor/AndroidStudioProjects/android-vaccine/app/src/main/res/layout/activity_add_vaccine.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/vitor/AndroidStudioProjects/android-vaccine/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/vitor/AndroidStudioProjects/android-vaccine/app/src/main/res/layout/add_vaccinated.xml" value="0.33242753623188404" />
+        <entry key="..\:/Users/vitor/AndroidStudioProjects/android-vaccine/app/src/main/res/layout/add_vaccine.xml" value="0.348731884057971" />
+        <entry key="..\:/Users/vitor/AndroidStudioProjects/android-vaccine/app/src/main/res/layout/fragment_vaccinated.xml" value="0.348731884057971" />
+        <entry key="..\:/Users/vitor/AndroidStudioProjects/android-vaccine/app/src/main/res/layout/fragment_vaccine.xml" value="0.348731884057971" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
