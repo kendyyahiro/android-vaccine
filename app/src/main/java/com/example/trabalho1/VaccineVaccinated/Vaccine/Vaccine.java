@@ -8,4 +8,11 @@ import androidx.room.PrimaryKey;
 
     public String nomeVacina;
     public String fabricante;
+
+    public Vaccine() {}
+
+    public Vaccine(String nomeVacina, String fabricante) {
+        this.nomeVacina = nomeVacina;
+        this.fabricante = fabricante;
+    }
 }

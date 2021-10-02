@@ -7,14 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
 import com.example.trabalho1.AddVaccineActivity;
 import com.example.trabalho1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 public class VaccineFragment extends Fragment {
 
     private FloatingActionButton btnAddVaccine;
+    private RecyclerView vaccineList;
+    private VaccineListAdapter vaccineListAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +42,35 @@ public class VaccineFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setupList();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        setupList();
+    }
+
+    private void setupList() {
+        /** CHAMAR A BUSCA DA LISTA **/
+        ArrayList<Vaccine> vaccines = new ArrayList<>();
+        vaccines.add(new Vaccine("Vacina 1", "Fabricante 1"));
+        vaccines.add(new Vaccine("Vacina 2", "Fabricante 2"));
+        vaccines.add(new Vaccine("Vacina 3", "Fabricante 3"));
+        /** CHAMAR A BUSCA DA LISTA **/
+
+        vaccineListAdapter = new VaccineListAdapter(vaccines);
+        LayoutManager layoutManager = new GridLayoutManager(requireContext(), 1);
+
+        vaccineList = getView().findViewById(R.id.vaccine_list);
+        vaccineList.setLayoutManager(layoutManager);
+        vaccineList.setItemAnimator(new DefaultItemAnimator());
+        vaccineList.setAdapter(vaccineListAdapter);
     }
 
     public static VaccineFragment newInstance() {
