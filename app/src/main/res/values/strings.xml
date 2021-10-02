@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Trabalho 1</string>
+    <string name="menu_vaccine">Vacinas</string>
+    <string name="menu_vaccinated">Vacinados</string>
 </resources>
