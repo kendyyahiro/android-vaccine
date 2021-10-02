@@ -26,7 +26,10 @@ public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        viewHolder.getTitle().setText(localDataSet.get(position).nomeVacina);
+        Vaccine vaccine = localDataSet.get(position);
+        String vaccineName = String.format("#%d - %s", vaccine.vacinaId, vaccine.nomeVacina);
+        viewHolder.getTitle().setText(vaccineName);
+        viewHolder.getItemSubtitle().setText(vaccine.fabricante);
     }
 
     @Override
@@ -38,14 +41,19 @@ public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView itemTitle;
+        private final TextView itemSubtitle;
 
         public ViewHolder(View view) {
             super(view);
             itemTitle = (TextView) view.findViewById(R.id.item_title);
+            itemSubtitle = (TextView) view.findViewById(R.id.item_subtitle);
         }
 
         public TextView getTitle() {
             return itemTitle;
+        }
+        public TextView getItemSubtitle() {
+            return itemSubtitle;
         }
     }
 
