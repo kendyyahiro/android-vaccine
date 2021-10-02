@@ -2,6 +2,7 @@ package com.example.trabalho1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -15,6 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView navigationView;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         navigationView = (BottomNavigationView) findViewById(R.id.navigationView);
         navigationView.setOnNavigationItemSelectedListener(this);
 
+        setupToolbar();
+        setupFirstFragment();
+    }
+
+    private void setupToolbar() {
+        toolbar = findViewById(R.id.mainToolbar);
+        toolbar.setTitle("Vacinados");
+        setSupportActionBar(toolbar);
+    }
+
+    private void setupFirstFragment() {
         getSupportActionBar().setTitle("Vacinados");
         Fragment vaccinatedFragment = VaccinatedFragment.newInstance();
         openFragment(vaccinatedFragment);
