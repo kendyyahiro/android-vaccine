@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_vaccinated"
+        android:icon="@drawable/ic_user_check"
+        android:title="@string/menu_vaccinated"/>
+
+    <item
+        android:id="@+id/menu_vaccine"
+        android:icon="@drawable/ic_briefcase"
+        android:title="@string/menu_vaccine"/>
+</menu>
