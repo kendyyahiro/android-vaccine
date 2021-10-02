@@ -11,4 +11,12 @@ import androidx.room.PrimaryKey;
     public String cpf;
     public int idade;
 
+    public Vaccinated() { }
+
+    public Vaccinated(int vacinaId, String nomePessoa, String cpf, int idade) {
+        this.vacinaId = vacinaId;
+        this.nomePessoa = nomePessoa;
+        this.cpf = cpf;
+        this.idade = idade;
+    }
 }
