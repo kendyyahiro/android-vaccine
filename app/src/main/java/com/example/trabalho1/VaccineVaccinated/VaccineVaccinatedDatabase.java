@@ -15,14 +15,23 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 @Database(entities = {Vaccine.class, Vaccinated.class}, version = 1)
 public abstract class VaccineVaccinatedDatabase extends RoomDatabase {
+    private static final String DB_NAME = "PostoX";
     private static volatile VaccineVaccinatedDatabase instance;
 
-    public static synchronized VaccineVaccinatedDatabase getInstance(Context context){
-        if (instance == null){
-            instance = Room.databaseBuilder(context.getApplicationContext(),
-                    VaccineVaccinatedDatabase.class, "PostoX").build();
+    public static synchronized VaccineVaccinatedDatabase getInstance(Context context) {
+        if (instance == null) {
+            instance = create(context);
         }
         return instance;
+    }
+
+    protected VaccineVaccinatedDatabase() {};
+
+    private static VaccineVaccinatedDatabase create(final Context context) {
+        return Room.databaseBuilder(
+                context,
+                VaccineVaccinatedDatabase.class,
+                DB_NAME).build();
     }
 
     public abstract IVaccineDao vaccineDao();
