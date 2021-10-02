@@ -1,0 +1,90 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "2151eeb945adeea3962682011bc125f3",
+    "entities": [
+      {
+        "tableName": "Vaccine",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`vacinaId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nomeVacina` TEXT, `fabricante` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "vacinaId",
+            "columnName": "vacinaId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nomeVacina",
+            "columnName": "nomeVacina",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fabricante",
+            "columnName": "fabricante",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "vacinaId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Vaccinated",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`numVacinado` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `vacinaId` INTEGER NOT NULL, `nomePessoa` TEXT, `cpf` TEXT, `idade` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "numVacinado",
+            "columnName": "numVacinado",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "vacinaId",
+            "columnName": "vacinaId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nomePessoa",
+            "columnName": "nomePessoa",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cpf",
+            "columnName": "cpf",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "idade",
+            "columnName": "idade",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "numVacinado"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2151eeb945adeea3962682011bc125f3')"
+    ]
+  }
+}
