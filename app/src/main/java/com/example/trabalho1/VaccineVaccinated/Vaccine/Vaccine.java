@@ -4,12 +4,10 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity public class Vaccine {
-    @PrimaryKey(autoGenerate = true) int vacinaId;
+    @PrimaryKey(autoGenerate = true) public int vacinaId;
 
     public String nomeVacina;
     public String fabricante;
-
-    public Vaccine() {}
 
     public Vaccine(String nomeVacina, String fabricante) {
         this.nomeVacina = nomeVacina;

@@ -30,12 +30,12 @@
     </RelativeLayout>
 
     <ImageButton
-        android:background="@color/white"
         android:id="@+id/item_edit"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        app:tint="@color/purple_700"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+        android:background="@color/white"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        app:tint="@color/purple_700" />
 
     <ImageButton
         android:background="@color/white"

@@ -12,8 +12,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="68dp"
         android:ems="10"
+        android:hint="Nome da Vacina"
         android:inputType="textPersonName"
-        android:text="Nome da Vacina"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,8 +25,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="25dp"
         android:ems="10"
+        android:hint="Nome do Fabricante"
         android:inputType="textPersonName"
-        android:text="Nome do Fabricante"
+        android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nome_vacina" />
 

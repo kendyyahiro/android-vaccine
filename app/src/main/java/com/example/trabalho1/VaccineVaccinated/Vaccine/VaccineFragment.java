@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
 import com.example.trabalho1.AddVaccineActivity;
 import com.example.trabalho1.R;
+import com.example.trabalho1.VaccineVaccinated.VaccineVaccinedDatabase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VaccineFragment extends Fragment {
 
@@ -58,10 +60,10 @@ public class VaccineFragment extends Fragment {
 
     private void setupList() {
         /** CHAMAR A BUSCA DA LISTA **/
-        ArrayList<Vaccine> vaccines = new ArrayList<>();
-        vaccines.add(new Vaccine("Vacina 1", "Fabricante 1"));
-        vaccines.add(new Vaccine("Vacina 2", "Fabricante 2"));
-        vaccines.add(new Vaccine("Vacina 3", "Fabricante 3"));
+        List<Vaccine> vaccines = getListVaccine();
+//        vaccines.add(new Vaccine("Vacina 1", "Fabricante 1"));
+//        vaccines.add(new Vaccine("Vacina 2", "Fabricante 2"));
+//        vaccines.add(new Vaccine("Vacina 3", "Fabricante 3"));
         /** CHAMAR A BUSCA DA LISTA **/
 
         vaccineListAdapter = new VaccineListAdapter(vaccines);
@@ -71,6 +73,14 @@ public class VaccineFragment extends Fragment {
         vaccineList.setLayoutManager(layoutManager);
         vaccineList.setItemAnimator(new DefaultItemAnimator());
         vaccineList.setAdapter(vaccineListAdapter);
+    }
+
+    public List<Vaccine> getListVaccine(){
+        VaccineVaccinedDatabase db = VaccineVaccinedDatabase.getInstance(getActivity());
+
+        List<Vaccine> vaccines = db.vaccineDao().getAll();
+
+        return vaccines;
     }
 
     public static VaccineFragment newInstance() {

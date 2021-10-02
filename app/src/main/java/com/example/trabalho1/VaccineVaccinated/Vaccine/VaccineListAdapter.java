@@ -1,20 +1,25 @@
 package com.example.trabalho1.VaccineVaccinated.Vaccine;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trabalho1.AddVaccineActivity;
+import com.example.trabalho1.EditVaccineActivity;
 import com.example.trabalho1.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.ViewHolder> {
 
-    private ArrayList<Vaccine> localDataSet;
-    public VaccineListAdapter(ArrayList<Vaccine> dataSet) {
+    private List<Vaccine> localDataSet;
+    public VaccineListAdapter(List<Vaccine> dataSet) {
         localDataSet = dataSet;
     }
 
@@ -30,6 +35,8 @@ public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.
         String vaccineName = String.format("#%d - %s", vaccine.vacinaId, vaccine.nomeVacina);
         viewHolder.getTitle().setText(vaccineName);
         viewHolder.getItemSubtitle().setText(vaccine.fabricante);
+        viewHolder.getItemEdit().setOnClickListener(getEditClickListener(vaccine, position));
+
     }
 
     @Override
@@ -37,23 +44,39 @@ public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.
         return localDataSet.size();
     }
 
-
+    private View.OnClickListener getEditClickListener(final Vaccine vaccine, final int position) {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), EditVaccineActivity.class);
+//                intent.putExtra("vacinaId", vacinaId + "");
+                view.getContext().startActivity(intent);
+            }
+        };
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView itemTitle;
         private final TextView itemSubtitle;
+        private final ImageButton itemEdit, ItemDelete;
 
         public ViewHolder(View view) {
             super(view);
             itemTitle = (TextView) view.findViewById(R.id.item_title);
             itemSubtitle = (TextView) view.findViewById(R.id.item_subtitle);
+            itemEdit = (ImageButton) view.findViewById(R.id.item_edit);
+            ItemDelete = (ImageButton) view.findViewById(R.id.item_delete);
         }
 
-        public TextView getTitle() {
-            return itemTitle;
-        }
+        public TextView getTitle() {return itemTitle;}
         public TextView getItemSubtitle() {
             return itemSubtitle;
+        }
+        public ImageButton getItemEdit() {
+            return itemEdit;
+        }
+        public ImageButton getItemDelete() {
+            return ItemDelete;
         }
     }
 

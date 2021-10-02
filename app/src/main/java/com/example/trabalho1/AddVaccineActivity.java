@@ -20,6 +20,8 @@ public class AddVaccineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vaccine);
 
+//        getSupportActionBar().setTitle("Adicionar Vacina");
+
         this.nomeVacina =  findViewById(R.id.nome_vacina);
         this.nomeFabricante =  findViewById(R.id.nome_fabricante);
         this.btnSalvar =  findViewById(R.id.btn_salvar);
@@ -27,17 +29,15 @@ public class AddVaccineActivity extends AppCompatActivity {
         this.btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveNewUser(nomeVacina.getText().toString(), nomeFabricante.getText().toString());
+                saveVacina(nomeVacina.getText().toString(), nomeFabricante.getText().toString());
             }
         });
     }
 
-    private void saveNewUser(String nomeVacina, String nomeFabricante) {
+    private void saveVacina(String nomeVacina, String nomeFabricante) {
         VaccineVaccinedDatabase db  = VaccineVaccinedDatabase.getInstance(this.getApplicationContext());
 
-        Vaccine vaccine = new Vaccine();
-        vaccine.nomeVacina = nomeVacina;
-        vaccine.fabricante = nomeFabricante;
+        Vaccine vaccine = new Vaccine(nomeVacina, nomeFabricante);
         db.vaccineDao().insert(vaccine);
 
         finish();
