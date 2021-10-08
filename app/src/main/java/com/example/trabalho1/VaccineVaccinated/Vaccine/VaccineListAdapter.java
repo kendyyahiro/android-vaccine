@@ -1,6 +1,7 @@
 package com.example.trabalho1.VaccineVaccinated.Vaccine;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.example.trabalho1.AddVaccineActivity;
 import com.example.trabalho1.EditVaccineActivity;
 import com.example.trabalho1.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +33,11 @@ public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        Vaccine vaccine = localDataSet.get(position);
+        Vaccine vaccine = (Vaccine) localDataSet.get(position);
         String vaccineName = String.format("#%d - %s", vaccine.vacinaId, vaccine.nomeVacina);
         viewHolder.getTitle().setText(vaccineName);
         viewHolder.getItemSubtitle().setText(vaccine.fabricante);
-        viewHolder.getItemEdit().setOnClickListener(getEditClickListener(vaccine, position));
+        viewHolder.getItemEdit().setOnClickListener(getEditClickListener(vaccine));
 
     }
 
@@ -44,12 +46,12 @@ public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.
         return localDataSet.size();
     }
 
-    private View.OnClickListener getEditClickListener(final Vaccine vaccine, final int position) {
+    private View.OnClickListener getEditClickListener(final Vaccine vaccine) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), EditVaccineActivity.class);
-//                intent.putExtra("vacinaId", vacinaId + "");
+                intent.putExtra("vaccine", (Serializable) vaccine);
                 view.getContext().startActivity(intent);
             }
         };

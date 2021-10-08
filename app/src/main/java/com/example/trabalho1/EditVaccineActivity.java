@@ -1,5 +1,6 @@
 package com.example.trabalho1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import com.example.trabalho1.VaccineVaccinated.VaccineVaccinedDatabase;
 
 public class EditVaccineActivity extends AppCompatActivity {
 
+    private int vacinaId;
     private EditText nomeVacina, nomeFabricante;
     private Button btnSalvar;
 
@@ -19,15 +21,17 @@ public class EditVaccineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vaccine);
+
+        Intent it = getIntent();
+        Vaccine vaccine = (Vaccine) it.getSerializableExtra("vaccine");
+
 //        this.getSupportActionBar().setTitle("Editar Vacina");
 
-//        vacinaId = findViewById(R.id.vacinaId);
         nomeVacina =  findViewById(R.id.nome_vacina);
         nomeFabricante =  findViewById(R.id.nome_fabricante);
         btnSalvar =  findViewById(R.id.btn_salvar);
 
-        Vaccine vaccine = getVaccine(1);
-        int vacinaId = 1;
+        vacinaId = vaccine.vacinaId;
         nomeVacina.setText(vaccine.nomeVacina);
         nomeFabricante.setText(vaccine.fabricante);
         btnSalvar.setText("Atualizar");

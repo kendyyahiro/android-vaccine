@@ -3,7 +3,9 @@ package com.example.trabalho1.VaccineVaccinated.Vaccine;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity public class Vaccine {
+import java.io.Serializable;
+
+@Entity public class Vaccine implements Serializable {
     @PrimaryKey(autoGenerate = true) public int vacinaId;
 
     public String nomeVacina;
