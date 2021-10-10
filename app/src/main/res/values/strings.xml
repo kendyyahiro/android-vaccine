@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Trabalho 1</string>
+    <string name="menu_home">Home</string>
     <string name="menu_vaccine">Vacinas</string>
     <string name="menu_vaccinated">Vacinados</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fernando_kendy_yahiro">Fernando Kendy Yahiro</string>
+    <string name="mateus_ragazzi_balbino">Mateus Ragazzi Balbino</string>
+    <string name="victor_koji_oshiro_shinohara">Victor Koji Oshiro Shinohara</string>
+    <string name="prof_ana_karina">Profª Ana Karina</string>
+    <string name="disciplina">Trabalho 1 - Programação para Dispositivos Móveis</string>
 </resources>

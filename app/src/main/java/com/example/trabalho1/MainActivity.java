@@ -37,14 +37,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     private void setupFirstFragment() {
-        getSupportActionBar().setTitle("Vacinados");
-        Fragment vaccinatedFragment = VaccinatedFragment.newInstance();
-        openFragment(vaccinatedFragment);
+        getSupportActionBar().setTitle("Home");
+        Fragment homeFragment = HomeFragment.newInstance();
+        openFragment(homeFragment);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menu_home:
+                getSupportActionBar().setTitle("Home");
+                Fragment homeFragment = HomeFragment.newInstance();
+                openFragment(homeFragment);
+                break;
             case R.id.menu_vaccinated:
                 getSupportActionBar().setTitle("Vacinados");
                 Fragment vaccinatedFragment = VaccinatedFragment.newInstance();

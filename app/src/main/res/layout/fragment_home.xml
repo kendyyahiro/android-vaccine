@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/materia_apresentacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/professora"
+        android:layout_centerInParent="true"
+        android:text="@string/disciplina"
+        android:textColor="#393838"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/professora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/aluno_1"
+        android:layout_centerInParent="true"
+        android:text="@string/prof_ana_karina"
+        android:textColor="#393838"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/aluno_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="25dp"
+        android:text="@string/victor_koji_oshiro_shinohara"
+        android:textColor="#393838" />
+
+    <TextView
+        android:id="@+id/aluno_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/aluno_1"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="false"
+        android:text="@string/fernando_kendy_yahiro"
+        android:textColor="#393838" />
+
+    <TextView
+        android:id="@+id/aluno_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/aluno_2"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="false"
+        android:text="@string/mateus_ragazzi_balbino"
+        android:textColor="#393838" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="55dp"
+        android:rotation="0"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/android_symbol" />
+
+
+</RelativeLayout>
