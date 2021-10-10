@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabalho1.AddVaccineActivity;
 import com.example.trabalho1.EditVaccineActivity;
 import com.example.trabalho1.R;
+import com.example.trabalho1.VaccineVaccinated.Vaccinated.Vaccinated;
 import com.example.trabalho1.VaccineVaccinated.VaccineVaccinedDatabase;
 
 import java.io.Serializable;
@@ -75,11 +76,17 @@ public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.
                         public void onClick(DialogInterface dialog, int id) {
                             VaccineVaccinedDatabase db  = VaccineVaccinedDatabase.getInstance(view.getContext());
 
-                            db.vaccineDao().delete(vaccine);
-                            localDataSet.remove(position);
-                            notifyDataSetChanged();
+                            List<Vaccinated> vaccinated = db.vaccinatedDao().getListVaccinatedByVaccine(vaccine.vacinaId);
 
-                            Toast.makeText(view.getContext(), "Removido com sucesso!", Toast.LENGTH_SHORT).show();
+                            if(vaccinated.isEmpty()){
+                                db.vaccineDao().delete(vaccine);
+                                localDataSet.remove(position);
+                                notifyDataSetChanged();
+
+                                Toast.makeText(view.getContext(), "Removido com sucesso!", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(view.getContext(), "Esse item não pode ser removido. Essa vacina já foi utilizada por algum vacinado", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     })
                     .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

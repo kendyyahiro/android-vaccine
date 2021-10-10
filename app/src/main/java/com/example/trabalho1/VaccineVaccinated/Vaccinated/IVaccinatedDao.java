@@ -7,11 +7,16 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.trabalho1.VaccineVaccinated.Vaccine.Vaccine;
+
 import java.util.List;
 
 @Dao public interface IVaccinatedDao {
     @Query("SELECT * FROM vaccinated")
     List<Vaccinated> getAll();
+
+    @Query("SELECT * FROM vaccinated WHERE vacinaId = :vacinaId")
+    List<Vaccinated> getListVaccinatedByVaccine(int vacinaId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     long insert(Vaccinated vaccinated);

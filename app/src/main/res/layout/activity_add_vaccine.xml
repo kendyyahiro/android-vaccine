@@ -5,39 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/mainToolbar" />
+
     <EditText
         android:id="@+id/nome_vacina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="379dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Nome da Vacina"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/nome_fabricante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="379dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Nome do Fabricante"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nome_vacina" />
 
     <Button
         android:id="@+id/btn_salvar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="378dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="17dp"
         android:text="Salvar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nome_fabricante" />
 </androidx.constraintlayout.widget.ConstraintLayout>

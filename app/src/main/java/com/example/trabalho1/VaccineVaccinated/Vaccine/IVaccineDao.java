@@ -16,7 +16,7 @@ import java.util.List;
     @Query("SELECT * FROM vaccine")
     List<Vaccine> getAll();
 
-    @Query("SELECT * from vaccine where vacinaId = :vacinaId LIMIT 1")
+    @Query("SELECT * from vaccine WHERE vacinaId = :vacinaId LIMIT 1")
     Vaccine getVaccine(int vacinaId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

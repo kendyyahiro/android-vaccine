@@ -59,12 +59,7 @@ public class VaccineFragment extends Fragment {
     }
 
     private void setupList() {
-        /** CHAMAR A BUSCA DA LISTA **/
         List<Vaccine> vaccines = getListVaccine();
-//        vaccines.add(new Vaccine("Vacina 1", "Fabricante 1"));
-//        vaccines.add(new Vaccine("Vacina 2", "Fabricante 2"));
-//        vaccines.add(new Vaccine("Vacina 3", "Fabricante 3"));
-        /** CHAMAR A BUSCA DA LISTA **/
 
         vaccineListAdapter = new VaccineListAdapter(vaccines);
         LayoutManager layoutManager = new GridLayoutManager(requireContext(), 1);
