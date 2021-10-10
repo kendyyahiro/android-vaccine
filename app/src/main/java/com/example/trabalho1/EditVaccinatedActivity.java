@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.trabalho1.VaccineVaccinated.Vaccinated.Vaccinated;
 import com.example.trabalho1.VaccineVaccinated.Vaccine.SpinnerAdapter;
@@ -25,6 +26,7 @@ public class EditVaccinatedActivity extends AppCompatActivity {
     private Spinner vacinaId;
     private Button btnSalvar;
     private Vaccine buscaVacinasSelecionado;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,13 @@ public class EditVaccinatedActivity extends AppCompatActivity {
 
             }
         });
+        setupToolbar();
+    }
+
+    private void setupToolbar() {
+        toolbar = findViewById(R.id.mainToolbar);
+        toolbar.setTitle("Editar Vacinado");
+        setSupportActionBar(toolbar);
     }
 
     private void updateVaccinated(int numVacinado, String nomePessoa, String cpf, int idade, int vacinaId) {
