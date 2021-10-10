@@ -12,7 +12,7 @@ import com.example.trabalho1.VaccineVaccinated.Vaccine.Vaccine;
 import java.io.Serializable;
 
 @Entity (foreignKeys = @ForeignKey(entity = Vaccinated.class,
-        parentColumns = "vacinaId",
+        parentColumns = "numVacinado",
         childColumns = "vacinaId",
         onDelete = CASCADE),
         indices={@Index(value="vacinaId", unique = true)})
