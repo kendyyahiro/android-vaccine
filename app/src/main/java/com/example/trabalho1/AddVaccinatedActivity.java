@@ -4,16 +4,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.trabalho1.VaccineVaccinated.Vaccinated.Vaccinated;
+import com.example.trabalho1.VaccineVaccinated.Vaccine.SpinnerAdapter;
+import com.example.trabalho1.VaccineVaccinated.Vaccine.Vaccine;
 import com.example.trabalho1.VaccineVaccinated.VaccineVaccinatedDatabase;
+
+import java.util.List;
 
 public class AddVaccinatedActivity extends AppCompatActivity {
 
-    private EditText nomePessoa, cpf, idade, vacinaId;
+    private EditText nomePessoa, cpf, idade;
+    private Spinner vacinaId;
     private Button btnSalvar;
+    private Vaccine buscaVacinasSelecionado;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +31,18 @@ public class AddVaccinatedActivity extends AppCompatActivity {
         this.nomePessoa =  findViewById(R.id.nome_pessoa);
         this.cpf =  findViewById(R.id.cpf);
         this.idade =  findViewById(R.id.idade);
-        // this.vacinaId =  findViewById(R.id.fk_vaccinated);
+        this.vacinaId =  findViewById(R.id.fk_vaccinated);
         this.btnSalvar =  findViewById(R.id.btn_salvar);
+
+        SpinnerAdapter adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, listVaccineOptions());
+        vacinaId.setAdapter(adapter);
 
         this.btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveVacinado(nomePessoa.getText().toString(), cpf.getText().toString(), Integer.parseInt(idade.getText().toString()), 1);
+                buscaVacinasSelecionado = (Vaccine) vacinaId.getSelectedItem();
+
+                saveVacinado(nomePessoa.getText().toString(), cpf.getText().toString(), Integer.parseInt(idade.getText().toString()), buscaVacinasSelecionado.getVacinaId());
             }
         });
     }
@@ -41,5 +54,13 @@ public class AddVaccinatedActivity extends AppCompatActivity {
         db.vaccinatedDao().insert(vaccinated);
 
         finish();
+    }
+
+    private List<Vaccine> listVaccineOptions(){
+        VaccineVaccinatedDatabase db = VaccineVaccinatedDatabase.getInstance(this);
+
+        List<Vaccine> vaccines = db.vaccineDao().getAll();
+
+        return vaccines;
     }
 }

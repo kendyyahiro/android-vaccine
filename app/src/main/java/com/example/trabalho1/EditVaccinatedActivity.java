@@ -1,21 +1,30 @@
 package com.example.trabalho1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.trabalho1.VaccineVaccinated.Vaccinated.Vaccinated;
+import com.example.trabalho1.VaccineVaccinated.Vaccine.SpinnerAdapter;
+import com.example.trabalho1.VaccineVaccinated.Vaccine.Vaccine;
 import com.example.trabalho1.VaccineVaccinated.VaccineVaccinatedDatabase;
+
+import java.util.List;
 
 public class EditVaccinatedActivity extends AppCompatActivity {
 
     private int numVacinado;
-    private EditText nomePessoa, cpf, idade, vacinaId;
+    private EditText nomePessoa, cpf, idade;
+    private Spinner vacinaId;
     private Button btnSalvar;
+    private Vaccine buscaVacinasSelecionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,24 +34,28 @@ public class EditVaccinatedActivity extends AppCompatActivity {
         Intent it = getIntent();
         Vaccinated vaccinated = (Vaccinated) it.getSerializableExtra("vaccinated");
 
-//        this.getSupportActionBar().setTitle("Editar Vacina");
-
         nomePessoa =  findViewById(R.id.nome_pessoa);
         cpf =  findViewById(R.id.cpf);
         idade =  findViewById(R.id.idade);
-        // this.vacinaId =  findViewById(R.id.fk_vaccinated);
+        vacinaId =  findViewById(R.id.fk_vaccinated);
         btnSalvar =  findViewById(R.id.btn_salvar);
+
+        SpinnerAdapter adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, listVaccineOptions());
+        vacinaId.setAdapter(adapter);
 
         numVacinado = vaccinated.numVacinado;
         nomePessoa.setText(vaccinated.nomePessoa);
         idade.setText(Integer.toString(vaccinated.idade));
         cpf.setText(vaccinated.cpf);
+        vacinaId.setSelection(adapter.getVacinaPositionById(vaccinated.vacinaId));
+
         btnSalvar.setText("Atualizar");
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateVaccinated(numVacinado, nomePessoa.getText().toString(), cpf.getText().toString(), Integer.parseInt(idade.getText().toString()) , 1);
+                buscaVacinasSelecionado = (Vaccine) vacinaId.getSelectedItem();
+                updateVaccinated(numVacinado, nomePessoa.getText().toString(), cpf.getText().toString(), Integer.parseInt(idade.getText().toString()), buscaVacinasSelecionado.getVacinaId());
 
             }
         });
@@ -58,11 +71,11 @@ public class EditVaccinatedActivity extends AppCompatActivity {
         finish();
     }
 
-    // private Vaccinated getVaccinated(int id){
-    //     VaccineVaccinatedDatabase db = VaccineVaccinatedDatabase.getInstance(this.getApplicationContext());
+    private List<Vaccine> listVaccineOptions(){
+        VaccineVaccinatedDatabase db = VaccineVaccinatedDatabase.getInstance(this);
 
-    //     Vaccinated vaccinated = db.vaccinatedDao().getVaccinated(id);
+        List<Vaccine> vaccines = db.vaccineDao().getAll();
 
-    //     return vaccinated;
-    // }
+        return vaccines;
+    }
 }
