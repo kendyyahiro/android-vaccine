@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.trabalho1.VaccineVaccinated.Vaccine.Vaccine;
-import com.example.trabalho1.VaccineVaccinated.VaccineVaccinedDatabase;
+import com.example.trabalho1.VaccineVaccinated.VaccineVaccinatedDatabase;
 
 public class AddVaccineActivity extends AppCompatActivity {
 
@@ -50,7 +50,7 @@ public class AddVaccineActivity extends AppCompatActivity {
     }
 
     private void saveVacina(String nomeVacina, String nomeFabricante) {
-        VaccineVaccinedDatabase db  = VaccineVaccinedDatabase.getInstance(this.getApplicationContext());
+        VaccineVaccinatedDatabase db  = VaccineVaccinatedDatabase.getInstance(this.getApplicationContext());
 
         Vaccine vaccine = new Vaccine(nomeVacina, nomeFabricante);
         db.vaccineDao().insert(vaccine);

@@ -1,5 +1,6 @@
 package com.example.trabalho1.VaccineVaccinated.Vaccinated;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,19 +10,40 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
+import com.example.trabalho1.AddVaccinatedActivity;
+import com.example.trabalho1.AddVaccineActivity;
 import com.example.trabalho1.R;
+import com.example.trabalho1.VaccineVaccinated.VaccineVaccinatedDatabase;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class VaccinatedFragment extends Fragment {
 
+    private FloatingActionButton btnAddVaccinated;
     private RecyclerView vaccinatedList;
     private VaccinatedListAdapter vaccinatedListAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_vaccinated, container, false);
+        super.onCreate(savedInstanceState);
+
+        View view = inflater.inflate(R.layout.fragment_vaccinated, container, false);
+
+        this.btnAddVaccinated = (FloatingActionButton) view.findViewById(R.id.add_vaccinated);
+
+        this.btnAddVaccinated.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendIntent = new Intent(getActivity(), AddVaccinatedActivity.class);
+
+                startActivity(sendIntent);
+            }
+        });
+
+        return view;
     }
 
     @Override
@@ -37,15 +59,10 @@ public class VaccinatedFragment extends Fragment {
     }
 
     private void setupList() {
-        /** CHAMAR A BUSCA DA LISTA **/
-        ArrayList<Vaccinated> vaccinatedArrayList = new ArrayList<>();
-        vaccinatedArrayList.add(new Vaccinated(5858, "Kendy", "055.325.687-08", 12));
-        vaccinatedArrayList.add(new Vaccinated(2456, "Koji", "054.312.544-21", 25));
-        vaccinatedArrayList.add(new Vaccinated(6542, "Mateus", "343.421.664-00", 06));
-        /** CHAMAR A BUSCA DA LISTA **/
+        List<Vaccinated> vaccinateds = getListVaccinated();
 
-        vaccinatedListAdapter = new VaccinatedListAdapter(vaccinatedArrayList);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(requireContext(), 1);
+        vaccinatedListAdapter = new VaccinatedListAdapter(vaccinateds);
+        LayoutManager layoutManager = new GridLayoutManager(requireContext(), 2);
 
         vaccinatedList = getView().findViewById(R.id.vaccinated_list);
         vaccinatedList.setLayoutManager(layoutManager);
@@ -53,7 +70,16 @@ public class VaccinatedFragment extends Fragment {
         vaccinatedList.setAdapter(vaccinatedListAdapter);
     }
 
+    public List<Vaccinated> getListVaccinated(){
+        VaccineVaccinatedDatabase db = VaccineVaccinatedDatabase.getInstance(getActivity());
+
+        List<Vaccinated> vaccinateds = db.vaccinatedDao().getAll();
+
+        return vaccinateds;
+    }
+
     public static VaccinatedFragment newInstance() {
         return new VaccinatedFragment();
     }
+
 }

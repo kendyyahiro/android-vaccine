@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".AddVaccineActivity" />
         <activity android:name=".EditVaccineActivity" />
+        <activity android:name=".AddVaccinatedActivity" />
+        <activity android:name=".EditVaccinatedActivity" />
     </application>
 
 </manifest>

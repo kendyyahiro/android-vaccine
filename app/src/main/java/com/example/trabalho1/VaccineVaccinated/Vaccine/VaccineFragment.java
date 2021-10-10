@@ -14,10 +14,9 @@ import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
 import com.example.trabalho1.AddVaccineActivity;
 import com.example.trabalho1.R;
-import com.example.trabalho1.VaccineVaccinated.VaccineVaccinedDatabase;
+import com.example.trabalho1.VaccineVaccinated.VaccineVaccinatedDatabase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class VaccineFragment extends Fragment {
@@ -71,7 +70,7 @@ public class VaccineFragment extends Fragment {
     }
 
     public List<Vaccine> getListVaccine(){
-        VaccineVaccinedDatabase db = VaccineVaccinedDatabase.getInstance(getActivity());
+        VaccineVaccinatedDatabase db = VaccineVaccinatedDatabase.getInstance(getActivity());
 
         List<Vaccine> vaccines = db.vaccineDao().getAll();
 

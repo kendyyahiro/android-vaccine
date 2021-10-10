@@ -17,7 +17,7 @@ import com.example.trabalho1.AddVaccineActivity;
 import com.example.trabalho1.EditVaccineActivity;
 import com.example.trabalho1.R;
 import com.example.trabalho1.VaccineVaccinated.Vaccinated.Vaccinated;
-import com.example.trabalho1.VaccineVaccinated.VaccineVaccinedDatabase;
+import com.example.trabalho1.VaccineVaccinated.VaccineVaccinatedDatabase;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.
                     .setCancelable(false)
                     .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            VaccineVaccinedDatabase db  = VaccineVaccinedDatabase.getInstance(view.getContext());
+                            VaccineVaccinatedDatabase db  = VaccineVaccinatedDatabase.getInstance(view.getContext());
 
                             List<Vaccinated> vaccinated = db.vaccinatedDao().getListVaccinatedByVaccine(vaccine.vacinaId);
 
