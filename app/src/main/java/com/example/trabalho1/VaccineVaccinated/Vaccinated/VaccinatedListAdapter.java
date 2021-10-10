@@ -1,6 +1,7 @@
 package com.example.trabalho1.VaccineVaccinated.Vaccinated;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabalho1.AddVaccinatedActivity;
 import com.example.trabalho1.EditVaccinatedActivity;
 import com.example.trabalho1.R;
+import com.example.trabalho1.VaccineVaccinated.Vaccine.Vaccine;
 import com.example.trabalho1.VaccineVaccinated.Vaccine.VaccineListAdapter;
 import com.example.trabalho1.VaccineVaccinated.VaccineVaccinatedDatabase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,6 +27,7 @@ import java.util.List;
 public class VaccinatedListAdapter extends RecyclerView.Adapter<VaccinatedListAdapter.ViewHolder> {
 
     private List<Vaccinated> localDataSet;
+    private Context context;
     public VaccinatedListAdapter(List<Vaccinated> dataSet) {
         localDataSet = dataSet;
     }
@@ -32,17 +35,21 @@ public class VaccinatedListAdapter extends RecyclerView.Adapter<VaccinatedListAd
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.vaccinated_base_list, viewGroup, false);
+        context = view.getContext();
         return new VaccinatedListAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         Vaccinated vaccinated = (Vaccinated) localDataSet.get(position);
-        String vaccinatedName = String.format("#%d - %s", vaccinated.numVacinado, vaccinated.nomePessoa);
-        viewHolder.getTitle().setText(vaccinatedName);
-        viewHolder.getItemSubtitle().setText(vaccinated.cpf);
+        String title = String.format("%s", vaccinated.nomePessoa);
+        String subtitle = String.format("Idade: %d - Vacina: %s", vaccinated.idade, vaccineName(vaccinated.vacinaId));
+        viewHolder.getTitle().setText(title);
+        viewHolder.getItemSubtitle().setText(subtitle);
         viewHolder.getItemEdit().setOnClickListener(getEditClickListener(vaccinated));
         viewHolder.getItemDelete().setOnClickListener(getDeleteClickListener(vaccinated, position));
+
+
     }
 
     @Override
@@ -118,4 +125,10 @@ public class VaccinatedListAdapter extends RecyclerView.Adapter<VaccinatedListAd
         }
     }
 
+    private String vaccineName(int vacinaId){
+        VaccineVaccinatedDatabase db = VaccineVaccinatedDatabase.getInstance(context);
+
+        String vaccineName = db.vaccineDao().getVaccine(vacinaId).getNomeVacina();
+        return vaccineName;
+    }
 }
