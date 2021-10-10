@@ -42,7 +42,7 @@ public class EditVaccinatedActivity extends AppCompatActivity {
         vacinaId =  findViewById(R.id.fk_vaccinated);
         btnSalvar =  findViewById(R.id.btn_salvar);
 
-        SpinnerAdapter adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, listVaccineOptions());
+        SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_item, listVaccineOptions());
         vacinaId.setAdapter(adapter);
 
         numVacinado = vaccinated.numVacinado;

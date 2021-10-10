@@ -36,7 +36,7 @@ public class AddVaccinatedActivity extends AppCompatActivity {
         this.vacinaId =  findViewById(R.id.fk_vaccinated);
         this.btnSalvar =  findViewById(R.id.btn_salvar);
 
-        SpinnerAdapter adapter = new SpinnerAdapter(this, android.R.layout.simple_spinner_item, listVaccineOptions());
+        SpinnerAdapter adapter = new SpinnerAdapter(this, R.layout.spinner_item, listVaccineOptions());
         vacinaId.setAdapter(adapter);
 
         this.btnSalvar.setOnClickListener(new View.OnClickListener() {
