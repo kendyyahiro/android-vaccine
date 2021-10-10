@@ -11,8 +11,8 @@ import com.example.trabalho1.VaccineVaccinated.Vaccine.Vaccine;
 
 import java.io.Serializable;
 
-@Entity (foreignKeys = @ForeignKey(entity = Vaccinated.class,
-        parentColumns = "numVacinado",
+@Entity (foreignKeys = @ForeignKey(entity = Vaccine.class,
+        parentColumns = "vacinaId",
         childColumns = "vacinaId",
         onDelete = CASCADE))
 public class Vaccinated implements Serializable {

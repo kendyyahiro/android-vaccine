@@ -66,7 +66,7 @@ public class VaccineListAdapter extends RecyclerView.Adapter<VaccineListAdapter.
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext(), R.style.AlertDialog);
 
                 builder
                     .setTitle("Atenção")
