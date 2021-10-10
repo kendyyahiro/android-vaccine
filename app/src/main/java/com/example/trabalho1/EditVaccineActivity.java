@@ -22,7 +22,7 @@ public class EditVaccineActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_vaccine);
+        setContentView(R.layout.activity_add_edit_vaccine);
         setupToolbar();
 
         Intent it = getIntent();
