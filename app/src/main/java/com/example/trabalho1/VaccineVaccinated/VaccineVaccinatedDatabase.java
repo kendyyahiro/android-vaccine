@@ -11,7 +11,7 @@ import com.example.trabalho1.VaccineVaccinated.Vaccinated.Vaccinated;
 import com.example.trabalho1.VaccineVaccinated.Vaccine.IVaccineDao;
 import com.example.trabalho1.VaccineVaccinated.Vaccine.Vaccine;
 
-@Database(entities = {Vaccine.class, Vaccinated.class}, version = 4)
+@Database(entities = {Vaccine.class, Vaccinated.class}, version = 5)
 public abstract class VaccineVaccinatedDatabase extends RoomDatabase {
     private static volatile VaccineVaccinatedDatabase instance;
 

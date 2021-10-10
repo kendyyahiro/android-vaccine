@@ -14,8 +14,7 @@ import java.io.Serializable;
 @Entity (foreignKeys = @ForeignKey(entity = Vaccinated.class,
         parentColumns = "numVacinado",
         childColumns = "vacinaId",
-        onDelete = CASCADE),
-        indices={@Index(value="vacinaId", unique = true)})
+        onDelete = CASCADE))
 public class Vaccinated implements Serializable {
     @PrimaryKey(autoGenerate = true) public int numVacinado;
 
