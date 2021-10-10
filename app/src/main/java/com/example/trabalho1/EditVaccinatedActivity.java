@@ -8,9 +8,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.trabalho1.R;
 import com.example.trabalho1.VaccineVaccinated.Vaccinated.Vaccinated;
-import com.example.trabalho1.VaccineVaccinated.Vaccine.Vaccine;
 import com.example.trabalho1.VaccineVaccinated.VaccineVaccinatedDatabase;
 
 public class EditVaccinatedActivity extends AppCompatActivity {
@@ -22,7 +20,7 @@ public class EditVaccinatedActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_vaccinated);
+        setContentView(R.layout.activity_add_edit_vaccinated);
 
         Intent it = getIntent();
         Vaccinated vaccinated = (Vaccinated) it.getSerializableExtra("vaccinated");
