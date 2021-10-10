@@ -62,7 +62,7 @@ public class VaccinatedFragment extends Fragment {
         List<Vaccinated> vaccinateds = getListVaccinated();
 
         vaccinatedListAdapter = new VaccinatedListAdapter(vaccinateds);
-        LayoutManager layoutManager = new GridLayoutManager(requireContext(), 2);
+        LayoutManager layoutManager = new GridLayoutManager(requireContext(), 1);
 
         vaccinatedList = getView().findViewById(R.id.vaccinated_list);
         vaccinatedList.setLayoutManager(layoutManager);
